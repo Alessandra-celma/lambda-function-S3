@@ -23,4 +23,9 @@ Sempre que ocorre uma ação em um bucket S3 (como o upload de um arquivo), o La
 
 ---
 
-### 🧩 Fluxo de Automação
+Entendendo o Amazon S3 (Simple Storage Service)
+O que é?
+O Amazon S3 é o serviço de armazenamento em nuvem da AWS.
+Ele permite guardar e acessar qualquer tipo de arquivo — imagens, vídeos, documentos, backups, logs, dados de sistemas — de forma segura, escalável e acessível pela internet.
+Pense nele como um “HD infinito na nuvem”, que nunca enche e que você pode acessar de qualquer lugar. 
+
