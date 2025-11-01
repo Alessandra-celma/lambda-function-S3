@@ -6,9 +6,9 @@ Sempre que ocorre uma ação em um bucket S3 (como o upload de um arquivo), o La
 
 ---
 
-### 💼 Exemplos de Tarefas Automatizadas
+###  Exemplos de Tarefas Automatizadas
 
-| 💼 **Tarefa** | 📦 **Ação no S3** | ⚡ **O que a Lambda faz automaticamente** |
+|  **Tarefa** |  **Ação no S3** |  **O que a Lambda faz automaticamente** |
 |----------------|------------------|-------------------------------------------|
 | 1️⃣ Redimensionar imagens | Upload de imagem | Redimensiona e salva em outra pasta ou bucket |
 | 2️⃣ Converter formatos de arquivo | Upload de `.png` | Converte para `.jpg`, `.webp`, ou outro formato |
@@ -35,7 +35,7 @@ Você apenas **cria uma função**, define **quando ela deve ser executada** (po
 
 ---
 
-### 🧠 Conceito simples
+### Conceito simples
 
 - **Lambda = código que roda sob demanda**
 - **Sem servidores:** você não precisa configurar nem manter máquinas.
@@ -44,7 +44,7 @@ Você apenas **cria uma função**, define **quando ela deve ser executada** (po
 ---
 
 ### Como funciona
-📸 **Exemplo:**  
+**Exemplo:**  
 Você envia uma imagem para o S3 → o Lambda é acionado automaticamente → redimensiona a imagem → salva a nova versão.
 
 ---
@@ -54,16 +54,13 @@ Você envia uma imagem para o S3 → o Lambda é acionado automaticamente → re
 - Responde a **eventos automáticos** (S3, DynamoDB, API Gateway, etc.)  
 - Ideal para **automações, processamento de arquivos e integrações rápidas**
 
-## 📤 Upload de Arquivos com Processamento e Registro no DynamoDB
+##  Upload de Arquivos com Processamento e Registro no DynamoDB
 
 Essa automação mostra como o **Amazon S3**, o **AWS Lambda** e o **Amazon DynamoDB** trabalham juntos para processar dados automaticamente.
 
 ---
 
-### ⚙️ Fluxo do Processo
----
-
-### 🧩 Etapas explicadas
+###  Etapas explicadas
 
 1️⃣ **Upload no S3**  
 O usuário envia um arquivo CSV para o bucket S3.
@@ -79,33 +76,22 @@ Os dados processados são gravados automaticamente em uma tabela DynamoDB.
 
 ---
 
-### 📸 Exemplo visual
-
-![S3 Lambda DynamoDB](https://d1.awsstatic.com/diagrams/product-page-diagram_Lambda-DynamoDB_S3@2x.1e2eab28f0f9e5bcdedbb2c8710e15f3c4d48e3b.png)
-
----
-
-### 💡 Benefícios
+###  Benefícios
 - Totalmente **automático**  
 - **Sem servidores** para gerenciar  
 - **Escalável** e de **baixo custo**  
-- Ideal para pipelines de dados e relatórios
-## 🧰 Configurando a AWS Localmente com LocalStack
-
+- Ideal para pipelines de dados e relatórios  
+##  Configurando a AWS Localmente com LocalStack
 O **LocalStack** é uma ferramenta que permite **simular os serviços da AWS no seu computador**.  
 Com ele, você pode criar e testar funções Lambda, buckets S3 e tabelas DynamoDB **sem precisar estar conectado à nuvem real da AWS**.
-
----
-
-### ⚙️ Por que usar o LocalStack?
-
+###  Por que usar o LocalStack?
 ✅ Evita custos reais na AWS  
 ✅ Permite testar localmente (modo offline)  
 ✅ Ideal para estudos e desenvolvimento de automações
 
 ---
 
-### 🚀 Passos básicos de configuração
+###  Passos básicos de configuração
 
 1️⃣ **Instale o Docker**  
 O LocalStack roda dentro de um contêiner Docker.  
@@ -125,28 +111,33 @@ aws s3 ls --endpoint-url=http://localhost:4566
 	•	LocalStack = AWS local para testes
 	•	Sem custos e sem internet
 	•	Ideal para Lambda + S3 + DynamoDB em ambiente de desenvolvimento
-    ## 💾 Trabalhando com Arquivos Localmente com LocalStack (Parte 2)
+
+```
+---
 
 Com o **LocalStack** em execução, você pode **criar buckets S3**, **enviar arquivos**, **simular funções Lambda** e **registrar dados no DynamoDB**, tudo localmente — sem precisar da AWS real.
 
 ---
 
-### 🪣 1️⃣ Criando um Bucket S3 local
+###  1️⃣ Criando um Bucket S3 local
+
+---
 
 ```bash
 aws --endpoint-url=http://localhost:4566 s3 mb s3://meu-bucket-local
 📦 Isso cria um bucket S3 dentro do ambiente LocalStack.
 
+```
 ⸻
 
-📤 2️⃣ Enviando um arquivo para o bucket
+ 2️⃣ Enviando um arquivo para o bucket
 aws --endpoint-url=http://localhost:4566 s3 cp exemplo.csv s3://meu-bucket-local/
 Agora o arquivo exemplo.csv está armazenado localmente dentro do bucket.
 
 ⸻
 
-⚡ 3️⃣ Criando uma função Lambda simulada
-
+ 3️⃣ Criando uma função Lambda simulada
+```
 Crie um arquivo simples chamado lambda_function.py:
 def handler(event, context):
     print("Evento recebido:", event)
@@ -160,17 +151,18 @@ aws --endpoint-url=http://localhost:4566 lambda create-function \
   --role arn:aws:iam::000000000000:role/lambda-role \
   --handler lambda_function.handler \
   --zip-file fileb://function.zip
-🔄 5️⃣ Simulando o fluxo completo
+```
+
+ 5️⃣ Simulando o fluxo completo
+ 
 	1.	Você envia um arquivo .csv para o bucket local do S3
 	2.	O LocalStack gera um evento
 	3.	A função Lambda local é executada
 	4.	A Lambda grava um registro na tabela DynamoDB local
+	
+Tudo isso sem internet e sem custos reais 
 
-Tudo isso sem internet e sem custos reais 💡
-
-⸻
-
-💡 Resumo rápido
+   ## Resumo rápido
 	•	🧱 S3 local: recebe arquivos
 	•	⚡ Lambda local: processa os eventos
 	•	🗃️ DynamoDB local: armazena os dados
