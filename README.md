@@ -153,17 +153,26 @@ aws --endpoint-url=http://localhost:4566 lambda create-function \
   --zip-file fileb://function.zip
 ```
 
- 5️⃣ Simulando o fluxo completo
+5️⃣ Simulando o fluxo completo
  
 	1.	Você envia um arquivo .csv para o bucket local do S3
 	2.	O LocalStack gera um evento
 	3.	A função Lambda local é executada
 	4.	A Lambda grava um registro na tabela DynamoDB local
 	
-Tudo isso sem internet e sem custos reais 
+   Tudo isso sem internet e sem custos reais 
 
    ## Resumo rápido
-	•	🧱 S3 local: recebe arquivos
-	•	⚡ Lambda local: processa os eventos
-	•	🗃️ DynamoDB local: armazena os dados
-	•	🔄 Tudo acontece dentro do seu computador (ambiente simulado)
+	•	S3 local: recebe arquivos
+	•Lambda local: processa os eventos
+	•	DynamoDB local: armazena os dados
+	•Tudo acontece dentro do seu computador (ambiente simulado)
+
+  Referências Úteis
+
+	   Documentação oficial da AWS CloudFormation￼
+	   Guia de Referência de Recursos AWS￼
+	   Documentação Amazon S3￼
+	   Documentação AWS Lambda￼
+	   Exemplos de Templates CloudFormation (GitHub oficial da AWS)￼
+	   Santander Code Girls 2025 – DIO￼
