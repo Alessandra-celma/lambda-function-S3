@@ -168,11 +168,3 @@ aws --endpoint-url=http://localhost:4566 lambda create-function \
 	•	DynamoDB local: armazena os dados
 	•Tudo acontece dentro do seu computador (ambiente simulado)
 
-  Referências Úteis
-
-	   Documentação oficial da AWS CloudFormation￼
-	   Guia de Referência de Recursos AWS￼
-	   Documentação Amazon S3￼
-	   Documentação AWS Lambda￼
-	   Exemplos de Templates CloudFormation (GitHub oficial da AWS)￼
-	   Santander Code Girls 2025 – DIO￼
